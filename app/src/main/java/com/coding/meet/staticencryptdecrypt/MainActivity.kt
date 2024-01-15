@@ -11,25 +11,38 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val randomKeyBtn = findViewById<Button>(R.id.randomKeyBtn)
+        randomKeyBtn.setOnClickListener {
+            val securityManager = SecurityManager()
+
+            // Generate a random key for encryption
+            val randomKey = securityManager.generateRandomKey()
+            Log.d("randomKey", String(randomKey))
+        }
+
 
         val encDecryBtn = findViewById<Button>(R.id.encDecryBtn)
         encDecryBtn.setOnClickListener {
 
             val securityManager = SecurityManager()
 
-            // Generate a random key for encryption
-            val randomKey = securityManager.generateRandomKey()
-            Log.d("randomKey", String(randomKey))
+//            // Generate a random key for encryption
+//            val randomKey = securityManager.generateRandomKey()
+//            Log.d("randomKey", String(randomKey))
+
+            // Replace with actual external key
+            val externalKey = "750GdiCY1GWXzRjH2W9esuGDGAzNNvbVbxfAAAN65mt5WrZwlz49KgpYzFhLQejd".toByteArray(StandardCharsets.UTF_8)
+            Log.d("externalKey",String(externalKey))
 
 
             // Replace with your static string or Api key, URL
-            val valueToEncrypt = "https://github.com/Coding-Meet"
+            val valueToEncrypt = "DevCoding123Meet"
 
             // Encrypt the string using the random key
-            val encryptedString = securityManager.encryptStringWithKey(randomKey,valueToEncrypt)
+            val encryptedString = securityManager.encryptStringWithKey(externalKey,valueToEncrypt)
 
             // Decrypt the Encrypted string using the same random key
-            securityManager.decryptStringWithKey(randomKey,encryptedString)
+            securityManager.decryptStringWithKey(externalKey,encryptedString)
 
 
         }

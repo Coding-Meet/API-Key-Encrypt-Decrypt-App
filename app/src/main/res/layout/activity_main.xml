@@ -10,6 +10,12 @@
     tools:context=".MainActivity">
 
     <Button
+        android:id="@+id/randomKeyBtn"
+        android:layout_width="match_parent"
+        android:text="Random Key"
+        android:layout_height="wrap_content"/>
+
+    <Button
         android:id="@+id/encDecryBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
